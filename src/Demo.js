@@ -5,41 +5,67 @@ import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
+import {Grid} from '@mui/material';
+import  { useRef } from 'react';
 
 
 export default function MediaCard() {
+
+  const textRef = useRef(null);
+  const userPostIdRef = useRef(null);
+
+  const handleButtonClick = () => {
+    const textValue = textRef.current.value;
+    const userPostIdValue = userPostIdRef.current.value;
+    
+    // Example: Log values
+    console.log("Enter your name", textValue);
+    console.log("Enter bid amount:", userPostIdValue);
+  };
   return (
     
+    <div style={{ marginBottom: '16px', marginTop:'20px'}}>
+    <Grid container spacing={3}>
+
+    <Grid item xs={1} sm={2.5}>
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia
-        sx={{ height: 140 }}
-        //image="/static/images/jersey.jpg"
-        image="./jersey.jpg"
-        title="green iguana"
+        sx={{ height: 300 }}
+        image="./jersey.png"
+        
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
           
-Igor Larionov Autographed Vancouver Canucks Jersey
+        Igor Larionov Autographed Vancouver Canucks Jersey
         </Typography>
         <Typography variant="body2" color="text.secondary">
         Bid on this incredible adidas Vancouver Canucks pro jersey 
         that has been autographed by NHL legend - Igor Larionov. A must-have for the serious collector.</Typography>
       </CardContent>
       <h4 style={{ color: 'blue' }}>Current Bid: $379.00</h4>
-      <h6  style={{ color: 'blue' }}>Time Left: 15 days</h6>
-      <CardActions>
-        <Button variant="contained" >Bid</Button>
-      </CardActions>
+      <h6  style={{ color: 'red' }}>Time Left: 15 days</h6>
     
+     
+      </Card>
+      </Grid>
 
+      <form className="commentForm">
+      <input type="text" placeholder="Enter your name" ref={textRef} /><br />
+      <br />
+      <input type="text" placeholder="Enter bid amount" ref={userPostIdRef} /><br />
+      <br />
+      <CardActions >
+        <Button variant="contained">Bid</Button>
+      </CardActions>
+    </form>
 
-<Card sx={{ maxWidth: 345 }}>
+      
+      <Grid item xs={1} sm={2.5}>
+      <Card sx={{ maxWidth: 345 }}>
       <CardMedia
-        sx={{ height: 140 }}
-        //image="/static/images/jersey.jpg"
-        image="./jersey.jpg"
-        title="green iguana"
+        sx={{ height: 300 }}
+        image="./puck.png"
       />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
@@ -50,13 +76,22 @@ Igor Larionov Autographed Vancouver Canucks Jersey
         Bid on this outstanding Vancouver Canucks official game puck that has been autographed by NHL superstar - Quinn Hughes. A perfect addition for your collection.</Typography>
       </CardContent>
       <h4 style={{ color: 'blue' }}>Current Bid: $99.00</h4>
-      <h6 style={{ color: 'blue' }}>Time Left: 15 days</h6>
-      
-      <CardActions>
-        <Button variant="contained" >Bid</Button>
-      </CardActions>
+      <h6 style={{ color: 'red'}}>Time Left: 10 days</h6>
+    
     </Card>
-    </Card>
+    </Grid>
+    <form className="commentForm">
+      <input type="text" placeholder="Enter your name" ref={textRef} /><br />
+      <br />
+      <input type="text" placeholder="Enter bid amount" ref={userPostIdRef} /><br />
+      <br />
+      <CardActions >
+        <Button variant="contained">Bid</Button>
+      </CardActions></form>
+    </Grid>
+    </div>
   );
+
+  
 }
 

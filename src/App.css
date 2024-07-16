@@ -36,3 +36,14 @@
     transform: rotate(360deg);
   }
 }
+
+.commentForm{
+  padding-left: 20px;
+  padding-right: 60px;
+  padding-inline: 0px;
+  justify-content: center;
+  padding-top: 40px;
+  margin: 10px 10px 30px 80px;
+  
+
+}

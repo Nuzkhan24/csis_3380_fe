@@ -66,8 +66,7 @@ export default function Bar() {
             <MenuIcon />
           </IconButton>
           
-          <Box component="img" src="./auction.jpg'" sx={{ width: 24, height: 24, mr: 1 }} /> {/* Adjust size as needed */}
-     
+          <Box component="img" src="./logo.png" alt="error" sx={{width: 140, height: 100, mr: 1 }} /> {/* Adjust size as needed */}
           <Typography
           
             variant="h6"
@@ -78,6 +77,7 @@ export default function Bar() {
             fontFamily: 'revert'
           }}
           >
+            
             Welcome to the Silent Auction
           </Typography>
           
