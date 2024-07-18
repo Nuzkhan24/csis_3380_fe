@@ -66,7 +66,6 @@ export default function Bar() {
             <MenuIcon />
           </IconButton>
           
-          <Box component="img" src="./logo.png" alt="error" sx={{width: 140, height: 100, mr: 1 }} /> {/* Adjust size as needed */}
           <Typography
           
             variant="h6"

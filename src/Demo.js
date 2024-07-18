@@ -7,6 +7,7 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import {Grid} from '@mui/material';
 import  { useRef } from 'react';
+import Box from '@mui/material/Box';
 
 
 export default function MediaCard() {
@@ -17,8 +18,7 @@ export default function MediaCard() {
   const handleButtonClick = () => {
     const textValue = textRef.current.value;
     const userPostIdValue = userPostIdRef.current.value;
-    
-    // Example: Log values
+  
     console.log("Enter your name", textValue);
     console.log("Enter bid amount:", userPostIdValue);
   };
@@ -45,21 +45,11 @@ export default function MediaCard() {
       </CardContent>
       <h4 style={{ color: 'blue' }}>Current Bid: $379.00</h4>
       <h6  style={{ color: 'red' }}>Time Left: 15 days</h6>
-    
-     
-      </Card>
-      </Grid>
-
-      <form className="commentForm">
-      <input type="text" placeholder="Enter your name" ref={textRef} /><br />
-      <br />
-      <input type="text" placeholder="Enter bid amount" ref={userPostIdRef} /><br />
-      <br />
       <CardActions >
         <Button variant="contained">Bid</Button>
       </CardActions>
-    </form>
-
+      </Card>
+      </Grid>
       
       <Grid item xs={1} sm={2.5}>
       <Card sx={{ maxWidth: 345 }}>
@@ -78,16 +68,15 @@ export default function MediaCard() {
       <h4 style={{ color: 'blue' }}>Current Bid: $99.00</h4>
       <h6 style={{ color: 'red'}}>Time Left: 10 days</h6>
     
-    </Card>
-    </Grid>
-    <form className="commentForm">
-      <input type="text" placeholder="Enter your name" ref={textRef} /><br />
-      <br />
-      <input type="text" placeholder="Enter bid amount" ref={userPostIdRef} /><br />
-      <br />
+    <Box>
       <CardActions >
         <Button variant="contained">Bid</Button>
-      </CardActions></form>
+      </CardActions>
+      </Box>
+    </Card>
+    </Grid>
+  
+      
     </Grid>
     </div>
   );
