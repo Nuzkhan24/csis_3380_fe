@@ -25,8 +25,15 @@ export default function MediaCard() {
   return (
 
     <div style={{ marginBottom: '16px', marginTop: '20px' }}>
-      <Grid container spacing={2}>
 
+      <CardMedia
+        sx={{ height: 100 }}
+        image="./canucks.png"
+
+      />
+      <br/>
+
+      <Grid container spacing={2}>
         <Grid item xs={6} sm={3}>
           <Card sx={{ maxWidth: 345 }}>
             <CardMedia
@@ -84,13 +91,13 @@ export default function MediaCard() {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-              Pavel Bure Autographed 1992-93 Upper Deck Rookie Report Hockey Card
+                Pavel Bure Autographed 1992-93 Upper Deck Rookie Report Hockey Card
               </Typography>
               <Typography variant="body2" color="text.secondary">
-             
-Bid on this 1992-93 Upper Deck Rookie Report hockey card (#362) that features and has been signed by HOF'er - Pavel Bure
- 
- </Typography></CardContent>
+
+                Bid on this 1992-93 Upper Deck Rookie Report hockey card (#362) that features and has been signed by HOF'er - Pavel Bure
+
+              </Typography></CardContent>
             <h4 style={{ color: 'blue' }}>Current Bid: $39.00</h4>
             <h6 style={{ color: 'red' }}>Time Left: 18 days</h6>
 
@@ -110,10 +117,10 @@ Bid on this 1992-93 Upper Deck Rookie Report hockey card (#362) that features an
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-              ED JOVANOVSKI Signed Easton Stick - Vancouver Canucks
+                ED JOVANOVSKI Signed Easton Stick - Vancouver Canucks
               </Typography>
               <Typography variant="body2" color="text.secondary">
-              Autographed Ed Jovanovski Vancouver Canucks Easton Stick. This Stick would make a terrific addition to your collection. All of our Autographed Memorabilia comes with our Certificate of Authenticity</Typography>
+                Autographed Ed Jovanovski Vancouver Canucks Easton Stick. This Stick would make a terrific addition to your collection. All of our Autographed Memorabilia comes with our Certificate of Authenticity</Typography>
             </CardContent>
             <h4 style={{ color: 'blue' }}>Current Bid: $69.00</h4>
             <h6 style={{ color: 'red' }}>Time Left: 5 days</h6>
@@ -153,7 +160,7 @@ Bid on this 1992-93 Upper Deck Rookie Report hockey card (#362) that features an
           </Card>
         </Grid>
 
-        
+
         <Grid item xs={6} sm={3}>
           <Card sx={{ maxWidth: 345 }}>
             <CardMedia
@@ -162,10 +169,10 @@ Bid on this 1992-93 Upper Deck Rookie Report hockey card (#362) that features an
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-              Thatcher Demko Autographed Vancouver Canucks Reverse Retro adidas Pro Jersey
+                Thatcher Demko Autographed Vancouver Canucks Reverse Retro adidas Pro Jersey
               </Typography>
               <Typography variant="body2" color="text.secondary">
-              Bid on this outstanding Vancouver Canucks Reverse Retro adidas jersey that has been autographed by star netminder - Thatcher Demko. An excellent signature to add to your collection on this limited release jersey.</Typography>
+                Bid on this outstanding Vancouver Canucks Reverse Retro adidas jersey that has been autographed by star netminder - Thatcher Demko. An excellent signature to add to your collection on this limited release jersey.</Typography>
             </CardContent>
             <h4 style={{ color: 'blue' }}>Current Bid: $379.00</h4>
             <h6 style={{ color: 'red' }}>Time Left: 5 days</h6>
