@@ -64,7 +64,7 @@ export default function Bar() {
             noWrap
             component="div"
             sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' },
-            fontFamily: 'revert'
+            fontFamily: 'inherit'
           }}
           >
             

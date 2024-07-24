@@ -24,10 +24,10 @@ export default function MediaCard() {
   };
   return (
 
-    <div style={{ marginBottom: '16px', marginTop: '20px' }}>
+    <div>
 
       <CardMedia
-        sx={{ height: 100 }}
+        sx={{ height: 80, margin:  '16px', }}
         image="./canucks.png"
 
       />
@@ -186,6 +186,7 @@ export default function MediaCard() {
         </Grid>
 
       </Grid>
+      
     </div>
   );
 
