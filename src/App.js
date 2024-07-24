@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import Appbar from './Appbar'
-import Demo from './Demo.js'
+import Appbar from './components/Appbar.js'
+import Demo from './components/Demo.js'
 
 function App() {
   return (
