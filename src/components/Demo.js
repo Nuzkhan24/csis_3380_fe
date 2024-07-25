@@ -52,9 +52,10 @@ export default function MediaCard() {
             </CardContent>
             <h4 style={{ color: 'blue' }}>Current Bid: $379.00</h4>
             <h6 style={{ color: 'red' }}>Time Left: 15 days</h6>
+            <div className='button'>
             <CardActions >
               <Button variant="contained">Bid</Button>
-            </CardActions>
+            </CardActions></div>
           </Card>
         </Grid>
 
@@ -76,9 +77,11 @@ export default function MediaCard() {
             <h6 style={{ color: 'red' }}>Time Left: 10 days</h6>
 
             <Box>
+            <div className='button'>
               <CardActions >
                 <Button variant="contained">Bid</Button>
               </CardActions>
+              </div>
             </Box>
           </Card>
         </Grid>
@@ -102,9 +105,11 @@ export default function MediaCard() {
             <h6 style={{ color: 'red' }}>Time Left: 18 days</h6>
 
             <Box>
+              <div className='button'>
               <CardActions >
                 <Button variant="contained">Bid</Button>
               </CardActions>
+              </div>
             </Box>
           </Card>
         </Grid>
@@ -126,9 +131,11 @@ export default function MediaCard() {
             <h6 style={{ color: 'red' }}>Time Left: 5 days</h6>
 
             <Box>
+            <div className='button'>
               <CardActions >
                 <Button variant="contained">Bid</Button>
               </CardActions>
+              </div>
             </Box>
           </Card>
         </Grid>
@@ -153,9 +160,11 @@ export default function MediaCard() {
             <h6 style={{ color: 'red' }}>Time Left: 5 days</h6>
 
             <Box>
+            <div className='button'>
               <CardActions >
                 <Button variant="contained">Bid</Button>
               </CardActions>
+              </div>
             </Box>
           </Card>
         </Grid>
@@ -178,9 +187,11 @@ export default function MediaCard() {
             <h6 style={{ color: 'red' }}>Time Left: 5 days</h6>
 
             <Box>
+            <div className='button'>
               <CardActions >
                 <Button variant="contained">Bid</Button>
               </CardActions>
+              </div>
             </Box>
           </Card>
         </Grid>
