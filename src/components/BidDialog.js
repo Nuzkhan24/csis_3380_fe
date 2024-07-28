@@ -1,47 +1,49 @@
+// src/components/BidDialog.js
 import React, { useState } from 'react';
-import axios from 'axios';
+import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, Button } from '@mui/material';
 
 const BidDialog = ({ isOpen, onClose, onBidSubmit }) => {
   const [name, setName] = useState('');
-  const [bidAmount, setBidAmount] = useState('');
+  const [bid, setBid] = useState('');
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    const newBid = { name, bidAmount: parseFloat(bidAmount) };
-    
-    try {
-      const response = await axios.post('http://localhost:3000/api/bids', newBid);
-      onBidSubmit(response.data);
-      onClose();
-    } catch (error) {
-      console.error('Error submitting bid:', error);
-    }
+  const handleSubmit = () => {
+    onBidSubmit(name, bid);
+    onClose();
+    setName('');
+    setBid('');
   };
 
-  if (!isOpen) return null;
-
   return (
-    <div className="dialog-backdrop">
-      <div className="dialog">
-        <h2>Place Your Bid</h2>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Name:
-            <input type="text" value={name} onChange={(e) => setName(e.target.value)} required />
-           
-          </label>
-          <br />
-          <label>
-            Bid Amount:
-            <input type="number" value={bidAmount} onChange={(e) => setBidAmount(e.target.value)} required />
-          </label>
-          <br />
-          <br/>
-          <button type="submit">Submit</button>
-          <button type="button" onClick={onClose}>Cancel</button>
-        </form>
-      </div>
-    </div>
+    <Dialog open={isOpen} onClose={onClose}>
+      <DialogTitle>Enter your bid</DialogTitle>
+      <DialogContent>
+        <TextField
+          autoFocus
+          margin="dense"
+          label="Name"
+          type="text"
+          fullWidth
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+        />
+        <TextField
+          margin="dense"
+          label="Bid Amount"
+          type="number"
+          fullWidth
+          value={bid}
+          onChange={(e) => setBid(e.target.value)}
+        />
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={onClose} color="secondary">
+          Cancel
+        </Button>
+        <Button onClick={handleSubmit} color="primary">
+          Submit
+        </Button>
+      </DialogActions>
+    </Dialog>
   );
 };
 

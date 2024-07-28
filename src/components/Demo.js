@@ -6,7 +6,6 @@ import CardMedia from '@mui/material/CardMedia';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import { Grid } from '@mui/material';
-import { useRef } from 'react';
 import Box from '@mui/material/Box';
 
 import axios from 'axios';
@@ -14,9 +13,6 @@ import BidDialog from './BidDialog';
 import { useState, useEffect } from 'react';
 
 export default function MediaCard() {
-
-  const textRef = useRef(null);
-  const userPostIdRef = useRef(null);
 
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [bids, setBids] = useState([]);
@@ -211,20 +207,21 @@ export default function MediaCard() {
             </CardContent>
             <h4 style={{ color: 'blue' }}>Current Bid: $379.00</h4>
             <h6 style={{ color: 'red' }}>Time Left: 5 days</h6>
-
+           
             <Box>
-              <div className='button'>
                 <CardActions >
 
                   <button variant="contained" onClick={handleOpenDialog} >Bid</button>
                   <BidDialog isOpen={isDialogOpen} onClose={handleCloseDialog} onBidSubmit={handleBidSubmit} />
 
                 </CardActions>
-              </div>
+              
             </Box>
+
           </Card>
         </Grid>
       </Grid>
     </div>
+    
   );
 }

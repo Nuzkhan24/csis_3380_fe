@@ -1,4 +1,60 @@
-import React from 'react';
+// src/App.js
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import {Grid } from '@mui/material';
+import CardComponent from './components/CardComponent';
+import Appbar from './components/Appbar.js'
+import Demo from './components/Demo.js'
+
+const App = () => {
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    // Fetch items from the server
+    axios.get('/api/items')
+      .then(response => setItems(response.data))
+      .catch(error => console.error('Error fetching items:', error));
+  }, []);
+
+  const handleBidSubmit = (itemId, name, bidAmount) => {
+    const newBid = { itemId, name, bidAmount: parseFloat(bidAmount) };
+
+    // Save the bid to the database
+    axios.post('/api/bids', newBid)
+      .then(response => {
+        // Update the item with the new bid
+        setItems(items.map(item => 
+          item.id === itemId ? { ...item, currentBid: newBid.bidAmount } : item
+        ));
+      })
+      .catch(error => console.error('Error saving bid:', error));
+  };
+
+  return (
+    
+    <div> 
+       <div className="App">
+     <Appbar />
+     <Demo />
+   </div>
+      <Grid container spacing={2}>
+        {items.map(item => (
+          <Grid item xs={12} sm={6} md={4} key={item.id}>
+            <CardComponent item={item} onBidSubmit={handleBidSubmit} />
+          </Grid>
+        ))}
+      </Grid>
+    </div>
+  );
+ 
+};
+
+export default App;
+
+
+
+////////////////
+/*import React from 'react';
 import './App.css';
 import Appbar from './components/Appbar.js'
 import Demo from './components/Demo.js'
@@ -44,75 +100,4 @@ const App = () => {
 };
 
 export default App;
-
-
-
-/*
-const App = () => {
-  const [items, setItems] = useState([]);
-  const [bids, setBids] = useState([]);
-
-  useEffect(() => {
-    // Fetch items from the server
-    axios.get('/api/items')
-      .then(response => setItems(response.data))
-      .catch(error => console.error('Error fetching items:', error));
-      
-    // Fetch bids from the server
-    axios.get('/api/bids')
-      .then(response => setBids(response.data))
-      .catch(error => console.error('Error fetching bids:', error));
-  }, []);
-
-  const handleBidSubmit = (itemId, name, bidAmount) => {
-    const newBid = { itemId, name, bidAmount: parseFloat(bidAmount) };
-
-    // Save the bid to the database
-    axios.post('/api/bids', newBid)
-      .then(response => {
-        setBids([...bids, response.data]);
-      })
-      .catch(error => console.error('Error saving bid:', error));
-  };
-
-  const highestBid = bids.reduce((max, bid) => (bid.bidAmount > max ? bid.bidAmount : max), 0);
-
-  return (
-    <div>
-      <div className="App">
-      <Appbar />
-      <Demo />
-    </div>
-      <div className="card-container">
-        {items.map(item => (
-          <Demo key={item.id} item={item} onBidSubmit={handleBidSubmit} />
-        ))}
-      </div>
-      <div className="bids-list">
-        <h2>Current Bids</h2>
-        {bids.sort((a, b) => b.bidAmount - a.bidAmount).map(bid => (
-          <div key={bid.id}>
-            <p>{bid.name}: ${bid.bidAmount}</p>
-          </div>
-        ))}
-      </div>
-      <div>
-        <h3>Highest Bid: ${highestBid}</h3>
-      </div>
-    </div>
-  );
-};
-
-export default App;
 */
-
-/*
-function App() {
-  return (
-    <div className="App">
-      <Appbar />
-      <Demo />
-    </div>
-  );
-} */
-

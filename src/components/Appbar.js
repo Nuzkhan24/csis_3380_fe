@@ -48,7 +48,8 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function Bar({totalBids}) {
+
+export default function Bar({ totalBids }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
@@ -58,13 +59,14 @@ export default function Bar({totalBids}) {
             color="inherit"
             noWrap
             component="div"
-            sx={{ flexGrow: 1, display: { xs: 'none', sm: 'block' },
-            fontFamily: 'inherit'
-          }}
+            sx={{
+              flexGrow: 1, display: { xs: 'none', sm: 'block' },
+              fontFamily: 'inherit'
+            }}
           >
             Welcome to the Silent Auction
           </Typography>
-          
+
           <Typography
             variant="h6"
             color="inherit"
@@ -72,20 +74,20 @@ export default function Bar({totalBids}) {
             component="div"
             sx={{ display: { xs: 'none', sm: 'block' }, marginRight: 2, fontFamily: 'inherit' }}
           >
-            Total Bids: {totalBids}
+            Total Bids: 
           </Typography>
 
-          <Search>
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ 'aria-label': 'search' }}
-            />
-          </Search>
-        </Toolbar>
-      </AppBar>
-    </Box>
+        <Search>
+          <SearchIconWrapper>
+            <SearchIcon />
+          </SearchIconWrapper>
+          <StyledInputBase
+            placeholder="Search…"
+            inputProps={{ 'aria-label': 'search' }}
+          />
+        </Search>
+      </Toolbar>
+    </AppBar>
+    </Box >
   );
 }
