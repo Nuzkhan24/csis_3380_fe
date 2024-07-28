@@ -18,17 +18,6 @@ export default function MediaCard() {
   const textRef = useRef(null);
   const userPostIdRef = useRef(null);
 
-  /* const handleButtonClick = () => {
-     const textValue = textRef.current.value;
-     const userPostIdValue = userPostIdRef.current.value;
- 
-     console.log("Enter your name", textValue);
-     console.log("Enter bid amount:", userPostIdValue);
-   };
- */
-  /******************************************** */
-
-
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [bids, setBids] = useState([]);
 
@@ -57,18 +46,13 @@ export default function MediaCard() {
     setBids((prevBids) => [newBid, ...prevBids]);
   };
 
-  /******************************************** */
   return (
-
     <div>
-
       <CardMedia
         sx={{ height: 80, margin: '16px', }}
         image="./canucks.png"
-
       />
       <br />
-
       <Grid container spacing={2}>
         <Grid item xs={6} sm={3}>
           <Card sx={{ maxWidth: 345 }}>
@@ -79,7 +63,6 @@ export default function MediaCard() {
             />
             <CardContent>
               <Typography gutterBottom variant="h5" component="div">
-
                 Igor Larionov Autographed Vancouver Canucks Jersey
               </Typography>
               <Typography variant="body2" color="text.secondary">
@@ -117,7 +100,6 @@ export default function MediaCard() {
                 <CardActions >
                   <button variant="contained" onClick={handleOpenDialog} >Bid</button>
                   <BidDialog isOpen={isDialogOpen} onClose={handleCloseDialog} onBidSubmit={handleBidSubmit} />
-
                 </CardActions>
               </div>
             </Box>
@@ -242,12 +224,7 @@ export default function MediaCard() {
             </Box>
           </Card>
         </Grid>
-
       </Grid>
-
     </div>
   );
-
-
 }
-
