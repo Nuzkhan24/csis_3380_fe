@@ -32,6 +32,11 @@
 .App-link {
   color: #61dafb;
 }
+.dialog{
+  font-size: small;
+  margin: 25px;
+  
+}
 
 @keyframes App-logo-spin {
   from {

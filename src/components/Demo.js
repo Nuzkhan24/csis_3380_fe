@@ -9,29 +9,65 @@ import { Grid } from '@mui/material';
 import { useRef } from 'react';
 import Box from '@mui/material/Box';
 
+import axios from 'axios';
+import BidDialog from './BidDialog';
+import { useState, useEffect } from 'react';
 
 export default function MediaCard() {
 
   const textRef = useRef(null);
   const userPostIdRef = useRef(null);
 
-  const handleButtonClick = () => {
-    const textValue = textRef.current.value;
-    const userPostIdValue = userPostIdRef.current.value;
+  /* const handleButtonClick = () => {
+     const textValue = textRef.current.value;
+     const userPostIdValue = userPostIdRef.current.value;
+ 
+     console.log("Enter your name", textValue);
+     console.log("Enter bid amount:", userPostIdValue);
+   };
+ */
+  /******************************************** */
 
-    console.log("Enter your name", textValue);
-    console.log("Enter bid amount:", userPostIdValue);
+
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+  const [bids, setBids] = useState([]);
+
+  useEffect(() => {
+    const fetchBids = async () => {
+      try {
+        const response = await axios.get('http://localhost:3000/api/bids');
+        setBids(response.data);
+      } catch (error) {
+        console.error('Error fetching bids:', error);
+      }
+    };
+
+    fetchBids();
+  }, []);
+
+  const handleOpenDialog = () => {
+    setIsDialogOpen(true);
   };
+
+  const handleCloseDialog = () => {
+    setIsDialogOpen(false);
+  };
+
+  const handleBidSubmit = (newBid) => {
+    setBids((prevBids) => [newBid, ...prevBids]);
+  };
+
+  /******************************************** */
   return (
 
     <div>
 
       <CardMedia
-        sx={{ height: 80, margin:  '16px', }}
+        sx={{ height: 80, margin: '16px', }}
         image="./canucks.png"
 
       />
-      <br/>
+      <br />
 
       <Grid container spacing={2}>
         <Grid item xs={6} sm={3}>
@@ -53,9 +89,9 @@ export default function MediaCard() {
             <h4 style={{ color: 'blue' }}>Current Bid: $379.00</h4>
             <h6 style={{ color: 'red' }}>Time Left: 15 days</h6>
             <div className='button'>
-            <CardActions >
-              <Button variant="contained">Bid</Button>
-            </CardActions></div>
+              <CardActions >
+                <Button variant="contained">Bid</Button>
+              </CardActions></div>
           </Card>
         </Grid>
 
@@ -77,10 +113,12 @@ export default function MediaCard() {
             <h6 style={{ color: 'red' }}>Time Left: 10 days</h6>
 
             <Box>
-            <div className='button'>
-              <CardActions >
-                <Button variant="contained">Bid</Button>
-              </CardActions>
+              <div className='button'>
+                <CardActions >
+                  <button variant="contained" onClick={handleOpenDialog} >Bid</button>
+                  <BidDialog isOpen={isDialogOpen} onClose={handleCloseDialog} onBidSubmit={handleBidSubmit} />
+
+                </CardActions>
               </div>
             </Box>
           </Card>
@@ -106,9 +144,11 @@ export default function MediaCard() {
 
             <Box>
               <div className='button'>
-              <CardActions >
-                <Button variant="contained">Bid</Button>
-              </CardActions>
+                <CardActions >
+                  <button variant="contained" onClick={handleOpenDialog} >Bid</button>
+                  <BidDialog isOpen={isDialogOpen} onClose={handleCloseDialog} onBidSubmit={handleBidSubmit} />
+
+                </CardActions>
               </div>
             </Box>
           </Card>
@@ -131,10 +171,12 @@ export default function MediaCard() {
             <h6 style={{ color: 'red' }}>Time Left: 5 days</h6>
 
             <Box>
-            <div className='button'>
-              <CardActions >
-                <Button variant="contained">Bid</Button>
-              </CardActions>
+              <div className='button'>
+                <CardActions >
+                  <button variant="contained" onClick={handleOpenDialog} >Bid</button>
+                  <BidDialog isOpen={isDialogOpen} onClose={handleCloseDialog} onBidSubmit={handleBidSubmit} />
+
+                </CardActions>
               </div>
             </Box>
           </Card>
@@ -160,10 +202,12 @@ export default function MediaCard() {
             <h6 style={{ color: 'red' }}>Time Left: 5 days</h6>
 
             <Box>
-            <div className='button'>
-              <CardActions >
-                <Button variant="contained">Bid</Button>
-              </CardActions>
+              <div className='button'>
+                <CardActions >
+                  <button variant="contained" onClick={handleOpenDialog} >Bid</button>
+                  <BidDialog isOpen={isDialogOpen} onClose={handleCloseDialog} onBidSubmit={handleBidSubmit} />
+
+                </CardActions>
               </div>
             </Box>
           </Card>
@@ -187,17 +231,20 @@ export default function MediaCard() {
             <h6 style={{ color: 'red' }}>Time Left: 5 days</h6>
 
             <Box>
-            <div className='button'>
-              <CardActions >
-                <Button variant="contained">Bid</Button>
-              </CardActions>
+              <div className='button'>
+                <CardActions >
+
+                  <button variant="contained" onClick={handleOpenDialog} >Bid</button>
+                  <BidDialog isOpen={isDialogOpen} onClose={handleCloseDialog} onBidSubmit={handleBidSubmit} />
+
+                </CardActions>
               </div>
             </Box>
           </Card>
         </Grid>
 
       </Grid>
-      
+
     </div>
   );
 
