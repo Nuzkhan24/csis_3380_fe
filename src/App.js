@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import {Grid } from '@mui/material';
 import CardComponent from './components/CardComponent';
-import Appbar from './components/Appbar.js'
-import Demo from './components/Demo.js'
+import MenuBar from './components/MenuBar.js'
+import Dashboard from './components/Dashboard.js'
 
 const App = () => {
   const [items, setItems] = useState([]);
@@ -33,8 +33,8 @@ const App = () => {
     
     <div> 
        <div className="App">
-     <Appbar />
-     <Demo />
+     <MenuBar />
+     <Dashboard />
    </div>
       <Grid container spacing={2}>
         {items.map(item => (
@@ -49,54 +49,3 @@ const App = () => {
 };
 
 export default App;
-
-
-
-////////////////
-/*import React from 'react';
-import './App.css';
-import Appbar from './components/Appbar.js'
-import Demo from './components/Demo.js'
-import axios from 'axios';
-import BidDialog from './components/BidDialog';
-import { useState, useEffect } from 'react';
-
-const App = () => {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
-  const [bids, setBids] = useState([]);
-
-  useEffect(() => {
-    const fetchBids = async () => {
-      try {
-        const response = await axios.get('http://localhost:3000/api/bids');
-        setBids(response.data);
-      } catch (error) {
-        console.error('Error fetching bids:', error);
-      }
-    };
-
-    fetchBids();
-  }, []);
-
-  const handleOpenDialog = () => {
-    setIsDialogOpen(true);
-  };
-
-  const handleCloseDialog = () => {
-    setIsDialogOpen(false);
-  };
-
-  const handleBidSubmit = (newBid) => {
-    setBids((prevBids) => [newBid, ...prevBids]);
-  };
-
-  return (
-       <div className="App">
-      <Appbar />
-      <Demo />
-    </div>
-  );
-};
-
-export default App;
-*/
