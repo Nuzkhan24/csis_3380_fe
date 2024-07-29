@@ -6,6 +6,11 @@ import Typography from '@mui/material/Typography';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
+import Accordion from '@mui/material/Accordion';
+import AccordionSummary from '@mui/material/AccordionSummary';
+import AccordionDetails from '@mui/material/AccordionDetails';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+
 
 const CardComponent = ({ item, handleOpenDialog }) => {
 
@@ -30,6 +35,21 @@ const CardComponent = ({ item, handleOpenDialog }) => {
         </Typography>
         <Button onClick={() => handleOpenDialog(item)} variant="contained">Bid</Button>
       </Stack>
+
+      <Accordion>
+        <AccordionSummary
+          expandIcon={<ExpandMoreIcon />}
+          aria-controls="panel1-content"
+          id="panel1-header"
+        >
+          Current bids
+        </AccordionSummary>
+        <AccordionDetails>
+          Name: Amie
+          Bid amount: 4500
+        </AccordionDetails>
+      </Accordion>
+
     </Card>
   );
 };
