@@ -10,9 +10,12 @@ import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-
+import Rating from '@mui/material/Rating';
 
 const CardComponent = ({ item, handleOpenDialog }) => {
+
+
+  const [rating, setRating] = useState(0);
 
   return (
     <Card elevation={6} sx={{ maxWidth: 345, padding: '2%' }}>
@@ -36,6 +39,12 @@ const CardComponent = ({ item, handleOpenDialog }) => {
         <Button onClick={() => handleOpenDialog(item)} variant="contained">Bid</Button>
       </Stack>
 
+      <Rating 
+        name="rating"
+        value={rating}
+        onChange={(event, newValue) => setRating(newValue)}
+      />
+
       <Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
@@ -45,6 +54,7 @@ const CardComponent = ({ item, handleOpenDialog }) => {
           Bidders List
         </AccordionSummary>
         <AccordionDetails>
+          
           <p>Name: Amie
           Bid amount: 4500</p>
           <p>
