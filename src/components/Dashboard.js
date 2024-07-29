@@ -3,20 +3,19 @@ import Grid from '@mui/material/Grid';
 
 import BidDialog from './BidDialog';
 import CardComponent from './CardComponent';
-import { getItems } from '../network/api'
+import { getItems } from '../network/api';
 
 export default function Dashboard() {
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [bids, setBids] = useState([]);
   const [items, setItems] = useState([]);
 
-
   useEffect(() => {
     const fetchItems = async () => {
       try {
         const items = await getItems();
         setItems(items);
-        console.log("debug: ", items);
+        console.log('debug: ', items);
       } catch (error) {
         console.error('Error fetching items:', error);
       }
@@ -38,12 +37,12 @@ export default function Dashboard() {
   };
 
   return (
-    
-      <Grid container spacing={2} mt={2}>
+    <Grid container spacing={2} mt={2}>
+      {items.map((item) => (
         <Grid item xs={6} sm={3}>
-        {items.map(item => <CardComponent item={item}/>)}
+          <CardComponent item={item} />
         </Grid>
-      </Grid>
-    
+      ))}
+    </Grid>
   );
 }
