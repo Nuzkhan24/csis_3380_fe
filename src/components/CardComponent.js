@@ -7,22 +7,8 @@ import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import Stack from '@mui/material/Stack';
 
-import BidDialog from './BidDialog';
+const CardComponent = ({ item, handleOpenDialog }) => {
 
-const CardComponent = ({ item, onBidSubmit }) => {
-  const [isDialogOpen, setDialogOpen] = useState(false);
-
-  const handleOpenDialog = () => {
-    setDialogOpen(true);
-  };
-
-  const handleCloseDialog = () => {
-    setDialogOpen(false);
-  };
-
-  const handleBidSubmit = (name, bidAmount) => {
-    onBidSubmit(item.id, name, bidAmount);
-  };
   return (
     <Card elevation={6} sx={{ maxWidth: 345, padding: '2%' }}>
       <CardMedia sx={{ height: 300 }} image={item.imgUrl} />
@@ -42,7 +28,7 @@ const CardComponent = ({ item, onBidSubmit }) => {
         <Typography variant="h6" color="red">
           Time Left: {item.activeDays} days
         </Typography>
-        <Button variant="contained">Bid</Button>
+        <Button onClick={() => handleOpenDialog(item)} variant="contained">Bid</Button>
       </Stack>
     </Card>
   );

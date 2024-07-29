@@ -1,20 +1,26 @@
-// src/components/BidDialog.js
-import React, { useState } from 'react';
-import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, Button } from '@mui/material';
+import React, { useEffect, useState } from 'react';
+import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography, Button } from '@mui/material';
 
-const BidDialog = ({ isOpen, onClose, onBidSubmit }) => {
+const BidDialog = ({
+  isOpen,
+  selectedItem,
+  handleCloseDialog,
+  onBidSubmit }) => {
   const [name, setName] = useState('');
-  const [bid, setBid] = useState('');
+  const [bid, setBid] = useState(selectedItem?.currentBid);
+  const [isValidBid, setIsValidBid] = useState(false);
 
-  const handleSubmit = () => {
-    onBidSubmit(name, bid);
-    onClose();
-    setName('');
-    setBid('');
-  };
+  useEffect(() => {
+    setBid(selectedItem?.currentBid);
+    setIsValidBid(Number.parseInt(bid) >  Number.parseInt(selectedItem?.currentBid));
+  }, [selectedItem?.currentBid])
+
+  useEffect(() => {
+    setIsValidBid(Number.parseInt(bid) >  Number.parseInt(selectedItem?.currentBid));
+  }, [bid])
 
   return (
-    <Dialog open={isOpen} onClose={onClose}>
+    <Dialog open={isOpen}>
       <DialogTitle>Enter your bid</DialogTitle>
       <DialogContent>
         <TextField
@@ -32,14 +38,24 @@ const BidDialog = ({ isOpen, onClose, onBidSubmit }) => {
           type="number"
           fullWidth
           value={bid}
-          onChange={(e) => setBid(e.target.value)}
+          onChange={(e) => {
+            setBid(e.target.value);
+          }}
         />
+        {!isValidBid &&
+          <Typography variant="h6" color="red">
+            * Please bid an amount higher than current bid: ${selectedItem?.currentBid}
+          </Typography>
+        }
       </DialogContent>
       <DialogActions>
-        <Button onClick={onClose} color="secondary">
+        <Button onClick={handleCloseDialog}>
           Cancel
         </Button>
-        <Button onClick={handleSubmit} color="primary">
+        <Button
+          onClick={onBidSubmit}
+          disabled={!isValidBid}
+        >
           Submit
         </Button>
       </DialogActions>

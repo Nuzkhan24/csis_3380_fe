@@ -6,9 +6,11 @@ import CardComponent from './CardComponent';
 import { getItems } from '../network/api';
 
 export default function Dashboard() {
-  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [bids, setBids] = useState([]);
   const [items, setItems] = useState([]);
+  const [selectedItem, setSelectedItem] = useState(null);
+
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -24,8 +26,9 @@ export default function Dashboard() {
     fetchItems();
   }, []);
 
-  const handleOpenDialog = () => {
+  const handleOpenDialog = (selectedItem) => {
     setIsDialogOpen(true);
+    setSelectedItem(selectedItem);
   };
 
   const handleCloseDialog = () => {
@@ -37,12 +40,18 @@ export default function Dashboard() {
   };
 
   return (
-    <Grid container spacing={2} mt={2}>
-      {items.map((item) => (
-        <Grid item xs={6} sm={3}>
-          <CardComponent item={item} />
-        </Grid>
-      ))}
-    </Grid>
+    <>
+      <Grid container spacing={2} mt={2}>
+        {items.map((item) => (
+          <Grid item xs={6} sm={3} key={item._id}>
+            <CardComponent item={item} handleOpenDialog={handleOpenDialog} />
+          </Grid>
+        ))}
+      </Grid>
+      <BidDialog
+        isOpen={isDialogOpen}
+        selectedItem={selectedItem}
+        handleCloseDialog={handleCloseDialog} />
+    </>
   );
 }
