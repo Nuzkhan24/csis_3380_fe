@@ -42,9 +42,17 @@ const CardComponent = ({ item, handleOpenDialog }) => {
           aria-controls="panel1-content"
           id="panel1-header"
         >
-          Current bids
+          Bidders List
         </AccordionSummary>
         <AccordionDetails>
+          <p>Name: Amie
+          Bid amount: 4500</p>
+          <p>
+          Name: Amie
+          Bid amount: 4500</p>
+          <p>
+          Name: Amie
+          Bid amount: 4500</p>
           Name: Amie
           Bid amount: 4500
         </AccordionDetails>
