@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, Typography, Button } from '@mui/material';
+import { addUserAndUpdateItem } from '../network/api';
+
+
 
 const BidDialog = ({
   isOpen,
   selectedItem,
   handleCloseDialog,
-  onBidSubmit }) => {
+   }) => {
   const [name, setName] = useState('');
   const [bid, setBid] = useState(selectedItem?.currentBid);
   const [isValidBid, setIsValidBid] = useState(false);
@@ -19,6 +22,10 @@ const BidDialog = ({
     setIsValidBid(Number.parseInt(bid) >  Number.parseInt(selectedItem?.currentBid));
   }, [bid])
 
+  const onBidSubmit = async () => {
+    await addUserAndUpdateItem(selectedItem, bid, name);
+  }
+  
   return (
     <Dialog open={isOpen}>
       <DialogTitle>Enter your bid</DialogTitle>
