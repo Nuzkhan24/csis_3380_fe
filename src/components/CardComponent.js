@@ -13,8 +13,6 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import Rating from '@mui/material/Rating';
 
 const CardComponent = ({ item, handleOpenDialog }) => {
-
-
   const [rating, setRating] = useState(0);
 
   return (
@@ -36,10 +34,12 @@ const CardComponent = ({ item, handleOpenDialog }) => {
         <Typography variant="h6" color="red">
           Time Left: {item.activeDays} days
         </Typography>
-        <Button onClick={() => handleOpenDialog(item)} variant="contained">Bid</Button>
+        <Button onClick={() => handleOpenDialog(item)} variant="contained">
+          Bid
+        </Button>
       </Stack>
 
-      <Rating 
+      <Rating
         name="rating"
         value={rating}
         onChange={(event, newValue) => setRating(newValue)}
@@ -51,23 +51,16 @@ const CardComponent = ({ item, handleOpenDialog }) => {
           aria-controls="panel1-content"
           id="panel1-header"
         >
-          Bidders List
+          <Typography variant="h6">Bidders List ({item?.bidders?.length})</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          
-          <p>Name: Amie
-          Bid amount: 4500</p>
-          <p>
-          Name: Amie
-          Bid amount: 4500</p>
-          <p>
-          Name: Amie
-          Bid amount: 4500</p>
-          Name: Amie
-          Bid amount: 4500
+          {item?.bidders?.map((i) => (
+            <Typography variant="overline"  display="block" gutterBottom>
+              Name: {i.name}, Bid: {i.bid}
+            </Typography>
+          ))}
         </AccordionDetails>
       </Accordion>
-
     </Card>
   );
 };

@@ -6,10 +6,15 @@ export const getItems = async () => {
 }
 
 export const addUserAndUpdateItem = async (item, newBid, user) => {
-    const response = await axios.put('/items/' + item._id, {
-        currentBid: newBid,
-        user
-    });
-    return response.data;
+    try {
+        const response = await axios.put('/items/' + item._id, {
+            currentBid: newBid,
+            user
+        });
+        return response.data;        
+    } catch (error) {
+        throw error;
+    }
+
 }
 
