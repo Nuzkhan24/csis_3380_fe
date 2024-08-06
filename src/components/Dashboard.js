@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Grid from '@mui/material/Grid';
 import Snackbar from '@mui/material/Snackbar';
-
 import BidDialog from './BidDialog';
 import CardComponent from './CardComponent';
 import { getItems,addUserAndUpdateItem } from '../network/api';
-
 export default function Dashboard({setTotalBids}) {
   const [items, setItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
