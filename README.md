@@ -1,6 +1,8 @@
 # Hosted on Cloudflare Pages
 https://csis-3380-fe.pages.dev/
 
+# Backend is hosted on Render
+https://csis-3380-be.onrender.com/api
 
 # Getting Started with Create React App
 
