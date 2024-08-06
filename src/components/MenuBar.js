@@ -8,13 +8,7 @@ import Typography from '@mui/material/Typography';
 export default function MenuBar({ totalBids }) {
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static"
-       sx={{ 
-        backgroundColor: '#ADD8E6',
-        backgroundSize: 'cover', 
-        backgroundPosition: 'center' 
-      }}
-      >
+      <AppBar position="static">
         <Toolbar>
           <Typography
             variant="h6"
@@ -22,7 +16,7 @@ export default function MenuBar({ totalBids }) {
             noWrap
             component="div"
             sx={{
-              flexGrow: 1, display: { xs: 'none', sm: 'block' ,marginTop: 2},
+              flexGrow: 1, display: { xs: 'none', sm: 'block' },
               fontFamily: 'inherit'
             }}
           >
@@ -33,11 +27,11 @@ export default function MenuBar({ totalBids }) {
             color="inherit"
             noWrap
             component="div"
-            sx={{ display: { xs: 'none', sm: 'block' }, marginRight: 2, fontFamily: 'inherit' ,marginTop: 2}}
+            sx={{ display: { xs: 'none', sm: 'block' }, marginRight: 2, fontFamily: 'inherit' }}
           >
             Total Bids: {totalBids}
           </Typography>
-          
+
         </Toolbar>
       </AppBar>
     </Box>
