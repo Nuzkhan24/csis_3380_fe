@@ -4,12 +4,18 @@ import Snackbar from '@mui/material/Snackbar';
 import BidDialog from './BidDialog';
 import CardComponent from './CardComponent';
 import { getItems,addUserAndUpdateItem } from '../network/api';
-export default function Dashboard({setTotalBids}) {
+import MenuBar from './MenuBar.js';
+
+export default function Dashboard({}) {
   const [items, setItems] = useState([]);
   const [selectedItem, setSelectedItem] = useState(null);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [openSnackbar, setOpenSnackbar] = useState(false);
   const [bidPlaced, setBidPlaced] = useState(false);
+
+  
+  const [totalBids, setTotalBids] = useState(0);
+  const [searchTerm, setSearchTerm] = useState('');
 
 
   const fetchItems = async () => {
@@ -64,8 +70,18 @@ export default function Dashboard({setTotalBids}) {
         message={ bidPlaced ? "Bid placed successfully" : "Failed to place the bid"} 
       />
   
+    <MenuBar totalBids={totalBids} searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <Grid container spacing={2} mt={2}>
-        {items.map((item) => (
+      {items
+          .filter((gridItem) => {
+            if (searchTerm === '') {
+              return gridItem;
+            } else if (gridItem.title.toLowerCase().includes(searchTerm.toLowerCase())) {
+              return gridItem;
+            }
+            return null;
+          }).map((item) => (
+
           <Grid item xs={6} sm={3} key={item._id}>
             <CardComponent item={item} handleOpenDialog={handleOpenDialog} />
           </Grid>
